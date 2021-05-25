@@ -31,19 +31,6 @@ const StepItem = ({active, title}) => {
                   .step-text{
                     padding-left: 55px;
                   }
-
-                  .height{
-                    animation-name: div-height;
-                  }
-
-                  @keyframes div-height{
-                    from {
-                      max-height: 1%;
-                    }
-                    to{
-                      max-height: 100%;
-                    }
-                  }
                 `}
             </style>
         </div>
