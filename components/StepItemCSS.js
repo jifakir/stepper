@@ -1,4 +1,4 @@
-import classes from '../styles/Form.module.css';
+import classes from './StepItemCSS.module.css';
 
 const StepItemCSS = ({active, title}) => {
 

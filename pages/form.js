@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FormSection from '../components/FormSection';
 import StepItemCSS from '../components/StepItemCSS';
 import classes from '../styles/Form.module.css';
 
@@ -63,11 +64,22 @@ const Form = () => {
                     </div>
                 </div>
                 <div className={classes.form_body}>
-                    <div onClick={prevHandler} className={classes.btn_prev}>
-                     Previous
+                    <div className={classes.form_slide_wrapper} >
+                      
+                        <FormSection active={index === 1} title="Let's complete your registration" /> 
+                        <FormSection active={index === 2} title="Career Pathway" />  
+                        <FormSection active={index === 3} title="Dream Job" /> 
+                        <FormSection active={index === 4} title="After Collaboration" />  
+                        <FormSection active={index === 5} title="Certification" />
+                        
                     </div>
-                    <div onClick={nextHandler} className={classes.btn_next}>
-                     Continue
+                    <div className={classes.navigate_button}>
+                        <div onClick={prevHandler} className={classes.btn_prev} style={{ visibility: `${index === 1 ? 'hidden' : 'visible' }`}}>
+                            Previous
+                        </div>
+                        <div onClick={nextHandler} className={classes.btn_next}>
+                            {index === 5 ? 'Submit' : 'Continue'}
+                        </div>
                     </div>
                 </div>
             </div>
