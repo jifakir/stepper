@@ -18,7 +18,7 @@ const Form = () => {
         if(index >= 5) return ;
         setIndex(index + 1);
     };
-    console.log(index);
+    
     return (
         <div className={classes.container}>
             <div className={classes.form_wrapper}>
