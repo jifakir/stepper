@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import StepItemCSS from '../components/StepItemCSS';
 import classes from '../styles/Form.module.css';
 
 
@@ -13,7 +14,7 @@ const Form = () => {
         setIndex(index - 1);
     };
     const nextHandler = () => {
-        if(index >= 6) return ;
+        if(index >= 5) return ;
         setIndex(index + 1);
     };
     console.log(index);
@@ -51,36 +52,12 @@ const Form = () => {
                                 <div className={classes.step_content}>
                                     <h4 className={classes.step_title}>Complete Profile</h4>
                                     <h4 className={classes.step_subtitle}>Personal Details</h4>
-                                    <div className={classes.first_dot}></div>
+                                    {index > 1 ? <div className={classes.first_dot}></div> : null}
                                 </div>
-                                <div className={classes.curve_line_wrapper}>
-                                    <div className={classes.left_line}></div>
-                                    <div className={classes.bottom_line}>
-                                        <div className={classes.bottom_dot}></div>
-                                        <p className={classes.menu_title}>Certification</p>
-                                    </div>
-                                </div>
-                                <div className={classes.curve_line_wrapper}>
-                                    <div className={classes.left_line}></div>
-                                    <div className={classes.bottom_line}>
-                                        <div className={classes.bottom_dot}></div>
-                                        <p className={classes.menu_title}>Certification</p>
-                                    </div>
-                                </div>
-                                <div className={classes.curve_line_wrapper}>
-                                    <div className={classes.left_line}></div>
-                                    <div className={classes.bottom_line}>
-                                        <div className={classes.bottom_dot}></div>
-                                        <p className={classes.menu_title}>Certification</p>
-                                    </div>
-                                </div>
-                                <div className={classes.curve_line_wrapper}>
-                                    <div className={classes.left_line}></div>
-                                    <div className={classes.bottom_line}>
-                                        <div className={classes.bottom_dot}></div>
-                                        <p className={classes.menu_title}>Certification</p>
-                                    </div>
-                                </div>
+                                { index >= 2 ? <StepItemCSS title="Career Pathway" active={index === 2} /> : null }
+                                { index >= 3 ? <StepItemCSS title="Dream Job" active={index === 3} /> : null }
+                                { index >= 4 ? <StepItemCSS title="After Collaboration" active={index === 4} /> : null }
+                                { index >= 5 ? <StepItemCSS title="Certification" active={index === 5} /> : null }
                             </div>
                         </div>
                     </div>
