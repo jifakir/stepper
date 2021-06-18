@@ -86,7 +86,7 @@ svg {
 
 
 .play-container {
-    position: absolute;
+    position: fixed;
     min-width: 100vw;
     min-height: 100vh;
     top: 0;
@@ -109,8 +109,8 @@ svg {
 
 .close-player {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 4px;
+    top: 4px;
     cursor: pointer;
 }
 
