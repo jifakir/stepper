@@ -32,13 +32,17 @@ export default class Video {
         const inputWrapper = document.createElement('div');
         const text = document.createElement('div');
         const input = document.createElement('input');
+        const attachVideo = document.createElement('a');
 
         this.wrapper.classList.add('wrapper');
         inputContainer.classList.add('input-container');
         inputWrapper.classList.add('input-wrapper');
         input.classList.add('input-disable');
+        text.classList.add('init-text');
 
-        text.innerHTML = 'Drag and Drop or add any video file';
+        text.innerHTML = `<span class="init-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 16c0 1.104-.896 2-2 2h-12c-1.104 0-2-.896-2-2v-8c0-1.104.896-2 2-2h12c1.104 0 2 .896 2 2v8zm8-10l-6 4.223v3.554l6 4.223v-12z"/></svg></span><span>Drag and Drop video file or </span>`;
+        attachVideo.innerHTML = 'Attach Video';
+        text.appendChild(attachVideo);
         this.wrapper.appendChild(inputContainer);
         inputContainer.appendChild(inputWrapper);
         inputWrapper.appendChild(text);
@@ -47,7 +51,13 @@ export default class Video {
         input.type = 'file';
         input.id = 'video';
         input.multiple = true;
+        input.accept = 'video/*'
 
+        attachVideo.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this._editVideo()
+        };
         inputContainer.ondragenter = () => inputContainer.classList.add('dashed-border');
         inputContainer.ondragover = () => inputContainer.classList.add('dashed-border');
         inputContainer.ondragleave = () => inputContainer.classList.remove('dashed-border');

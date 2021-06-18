@@ -37,10 +37,24 @@ svg {
 }
 
 .field-wrapper {
-    padding: 10px;
+    padding: 5px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.init-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.init-text a {
+    padding: 0 5px;
+}
+
+.init-icon {
+    padding: 0 5px;
 }
 
 .field-wrapper input{
