@@ -8,14 +8,18 @@ import classes from '../styles/Form.module.css';
 
 const Form = () => {
 
-    const [index, setIndex] = useState(1);
+    const [index, setIndex] = useState(0);
 
+    const content = [`Let's complete your registration`, 'Career Pathway', 'Dream Job', 'After Collaboration', 'Certification'  ]
+    const stepItem = content.filter((item, idx) => idx !== 0);
+    console.log(stepItem);
     const prevHandler = () => {
-        if(index <= 1) return ;
+        if(index <= 0) return ;
         setIndex(index - 1);
+        console.log(stepItem);
     };
     const nextHandler = () => {
-        if(index >= 5) return ;
+        if(index >= 4) return ;
         setIndex(index + 1);
     };
     
@@ -30,7 +34,7 @@ const Form = () => {
                         <div className={classes.step_1}>
                             <div className={classes.step_wrapper}>
                                 <div className={classes.circle}>
-                                    <div className={index === 1 ? classes.inner_circle_active : classes.inner_circle}>
+                                    <div className={index === 0 ? classes.inner_circle_active : classes.inner_circle}>
                                         <h1 className={classes.number}>1</h1>
                                     </div>
                                 </div>
@@ -38,27 +42,27 @@ const Form = () => {
                                     <h4 className={classes.step_title}>Step 1</h4>
                                     <h4 className={classes.step_subtitle}>Distract Profile</h4>
                                 </div>
-                                <div className={classes.v_line} style={{ backgroundColor: `${index === 1 ? '#6366F1' : '#aaa5'}`}}></div>
-                                <div className={classes.v_circle} style={{ backgroundColor: `${index === 1 ? '#6366F1' : '#aaa5'}`}}></div>
-                                <div className={classes.v_circle2} style={{ backgroundColor: `${index === 1 ? '#6366F1' : '#aaa5'}`}}></div>
+                                <div className={classes.v_line} style={{ backgroundColor: `${index === 0 ? '#6366F1' : '#aaa5'}`}}></div>
+                                <div className={classes.v_circle} style={{ backgroundColor: `${index === 0 ? '#6366F1' : '#aaa5'}`}}></div>
+                                <div className={classes.v_circle2} style={{ backgroundColor: `${index === 0 ? '#6366F1' : '#aaa5'}`}}></div>
                             </div>
                         </div>
                         <div className={classes.step_2}>
                             <div className={classes.step_wrapper}>
                                 <div className={classes.circle}>
-                                    <div className={index >= 2 ? classes.inner_circle_active : classes.inner_circle}>
+                                    <div className={index >= 1 ? classes.inner_circle_active : classes.inner_circle}>
                                         <h1 className={classes.number}>2</h1>
                                     </div>
                                 </div>
                                 <div className={classes.step_content}>
                                     <h4 className={classes.step_title}>Complete Profile</h4>
                                     <h4 className={classes.step_subtitle}>Personal Details</h4>
-                                    {index > 1 ? <div className={classes.first_dot}></div> : null}
+                                    {index > 0 ? <div className={classes.first_dot}></div> : null}
                                 </div>
-                                { index >= 2 ? <StepItemCSS title="Career Pathway" active={index === 2} /> : null }
-                                { index >= 3 ? <StepItemCSS title="Dream Job" active={index === 3} /> : null }
-                                { index >= 4 ? <StepItemCSS title="After Collaboration" active={index === 4} /> : null }
-                                { index >= 5 ? <StepItemCSS title="Certification" active={index === 5} /> : null }
+                                {
+                                    stepItem.map((item, idx) => <StepItemCSS key={idx} show={idx >= index} title={item} active={idx + 1 === index} />)
+                                }
+                                
                             </div>
                         </div>
                     </div>
@@ -66,19 +70,22 @@ const Form = () => {
                 <div className={classes.form_body}>
                     <div className={classes.form_slide_wrapper} >
                       
-                        <FormSection active={index === 1} title="Let's complete your registration" /> 
+                        {/* <FormSection active={index === 1} title="Let's complete your registration" /> 
                         <FormSection active={index === 2} title="Career Pathway" />  
                         <FormSection active={index === 3} title="Dream Job" /> 
                         <FormSection active={index === 4} title="After Collaboration" />  
-                        <FormSection active={index === 5} title="Certification" />
+                        <FormSection active={index === 5} title="Certification" /> */}
+                        {
+                            content.map((item, idx) => <FormSection title={item} active={index === idx} /> )
+                        }
                         
                     </div>
                     <div className={classes.navigate_button}>
-                        <div onClick={prevHandler} className={classes.btn_prev} style={{ visibility: `${index === 1 ? 'hidden' : 'visible' }`}}>
+                        <div onClick={prevHandler} className={classes.btn_prev} style={{ visibility: `${index === 0 ? 'hidden' : 'visible' }`}}>
                             Previous
                         </div>
                         <div onClick={nextHandler} className={classes.btn_next}>
-                            {index === 5 ? 'Submit' : 'Continue'}
+                            {index === 4 ? 'Submit' : 'Continue'}
                         </div>
                     </div>
                 </div>
