@@ -88,7 +88,7 @@ const Form = () => {
                             Previous
                         </div>
                         <div onClick={nextHandler} className={classes.btn_next}>
-                            {index === 4 ? 'Submit' : 'Continue'}
+                            {index === content.length - 1 ? 'Submit' : 'Continue'}
                         </div>
                     </div>
                 </div>
