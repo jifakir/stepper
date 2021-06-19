@@ -19,9 +19,11 @@ const Form = () => {
         console.log(stepItem);
     };
     const nextHandler = () => {
-        if(index >= 4) return ;
+        if(index >= content.length -1) return ;
         setIndex(index + 1);
     };
+
+    const percent = (100 / content.length) * (index + 1);
     
     return (
         <div className={classes.container}>
@@ -68,6 +70,7 @@ const Form = () => {
                     </div>
                 </div>
                 <div className={classes.form_body}>
+                   
                     <div className={classes.form_slide_wrapper} >
                       
                         {/* <FormSection active={index === 1} title="Let's complete your registration" /> 
@@ -76,7 +79,7 @@ const Form = () => {
                         <FormSection active={index === 4} title="After Collaboration" />  
                         <FormSection active={index === 5} title="Certification" /> */}
                         {
-                            content.map((item, idx) => <FormSection title={item} active={index === idx} /> )
+                            content.map((item, idx) => <FormSection title={item} active={index === idx} percent={ (100 / content.length) * (index + 1)} /> )
                         }
                         
                     </div>
